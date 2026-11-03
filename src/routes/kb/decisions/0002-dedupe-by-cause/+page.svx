@@ -1,0 +1,109 @@
+---
+layout: runbook
+title: '0002 — Split #4471 and deduplicate by cause'
+owner: support desk / GPT-6.1 Sol
+status: proposed
+reviewed: '2026-11-03'
+signature: 'GPT-6.1 Sol / openai/gpt-6.1-sol / MEGA S01E03'
+---
+
+<script>
+  import IncidentReview from '#lib/kb/IncidentReview.svelte';
+  import CauseTable from '#lib/kb/CauseTable.svelte';
+  import QueueTimeline from '#lib/kb/QueueTimeline.svelte';
+  import DedupeExplorer from '#lib/kb/DedupeExplorer.svelte';
+  import RenderStamp from '#lib/kb/RenderStamp.svelte';
+  import Callout from '#lib/kb/Callout.svelte';
+</script>
+
+## Context: the label is not the diagnosis
+
+This review supersedes the subject-only merging recommendation in
+[decision 0001](/kb/decisions/0001-dedupe-by-subject) and
+[the old triage guide](/kb/triage/dedupe). The accepted decision record is preserved unchanged.
+This replacement is **proposed**, not approval on behalf of the support desk.
+
+The [incident page for #4471](/kb/incidents/4471) says “one issue, one fix queued.”
+Its computed table contradicts that claim. A known label and a queued fix do not mean
+every report has the same cause, or that either problem is fixed.
+
+This is a review of the export dated 2026-10-04, not live access to the desk.
+The reviewed date records this review; it does not make old exported data current.
+Check later reports before making a current operational claim.
+
+## What the reports cover
+
+<IncidentReview />
+
+<CauseTable ticket={4471} />
+
+### Parser: day-first dates read month-first
+
+The shared parser interprets dates as MM/DD even when the tenant uses day-first dates.
+For example, `harbour.dental` uses `en-GB` and `booking-v2`; `R-41200` describes
+7 April becoming 4 July. The adjacent `R-41201` corrects that account in the other
+direction. Their wording differs, but the tenant and input path identify the parser cause.
+
+This group includes app and email reports, plus forms whose hint already agrees with
+the tenant locale. Keep a parser ticket for this group. Fix the shared parser to respect
+the tenant's date order, reject ambiguous input where appropriate, and test app, email,
+and booking-v2 paths. Verify both ambiguous dates and dates with a day greater than twelve.
+
+### Hint: booking-v3 tells people to use the wrong order
+
+For day-first tenants using booking-v3, the form prints `MM/DD/YYYY` while interpreting
+input using the tenant's day-first order. Following the displayed hint therefore produces
+the wrong date. This is a separate UI/input contract bug, not a duplicate parser report.
+
+Examples are `R-41230` (`copper.studio`, `es-ES`), `R-41241`
+(`alder.physio`, `de-DE`), and `R-41251` (`pale.harbour`, `pt-PT`).
+All came through the form. Use a separate ticket: make the displayed hint and parser agree
+with the tenant locale; test all affected booking-v3 locales. A shared-parser fix alone
+does not establish that this hint is correct.
+
+### Keep uncertainty visible
+
+Reports `R-41202`, `R-41209`, `R-41236`, `R-41344`, and `R-41620` have unusual
+one-day or timing descriptions. The supplied cause logic and desk notes keep them under
+the parser group by tenant and channel. Preserve their IDs and descriptions for follow-up;
+do not invent a proven timezone cause from prose alone, and do not silently drop them.
+
+## Decision proposed: merge only when the cause matches
+
+1. Deduplicate export rows by report ID before counting; repeated rows are not new reports.
+2. Look up the tenant's locale and booking form. Do not use browser locale or the intake tag as the diagnosis.
+3. Apply `causeOf` from `src/lib/kb/causes.ts`, using the report channel and tenant record.
+4. Merge only reports with the same established cause. Equal subject lines are neither necessary nor sufficient.
+5. Keep unknown tenants or unclassified reports separate for investigation. Missing evidence is not a merge rule.
+6. Record report IDs and counts on each ticket; reclassify new reports as they arrive.
+
+The executable examples below contrast different subjects with the same cause, equal
+subjects with different causes, and unknown tenants. The displayed results run the same
+classification logic as the count table.
+
+<DedupeExplorer />
+
+<Callout kind="warn">
+Do not follow the old guide's “when unsure, merge” instruction. Keep unclassified reports
+apart until the tenant and cause are known. Submit this replacement for desk review.
+</Callout>
+
+## What the timeline actually shows
+
+The chart distinguishes receipt time from merge time. A batch merge is work on the queue,
+not evidence that the underlying product suddenly broke on the merge date. Reports continue
+after the batch and through the export cutoff; “known” is not “resolved.”
+
+<QueueTimeline ticket={4471} />
+
+## Follow-through
+
+The public tickets are [parser, issue #1](https://github.com/slawek-kordaczuk/mega-s01e03-what-it-shows/issues/1)
+and [booking-v3 hint, issue #2](https://github.com/slawek-kordaczuk/mega-s01e03-what-it-shows/issues/2).
+Each records its unique count, evidence, reproduction, and expected result.
+The cause table above describes the original exported desk ticket, before this public split.
+Keep the old decision intact;
+ask the support desk to accept this replacement and update its triage entry point.
+At handover, re-check current desk counts rather than treating this snapshot as a live queue.
+
+<RenderStamp {signature} />
