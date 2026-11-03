@@ -44,4 +44,7 @@ a suitable token and explicitly approved this public repository, file pushes, an
 The course accepted the two tickets at step one. Its next engineering update says #4471
 closed on 2026-10-05: parser fixed (`fix(dates): parse dd/mm for eu locales`), hint won't fix
 (booking-v3 form retired). The public closures preserve those different outcomes:
-parser completed; hint not planned. Final course acceptance is pending resubmission.
+parser completed; hint not planned.
+
+The course accepted the final submission on 2026-11-03 at 20:59:22 UTC.
+Debrief: https://hq.mega.dev/challenges/what-it-shows#debrief
