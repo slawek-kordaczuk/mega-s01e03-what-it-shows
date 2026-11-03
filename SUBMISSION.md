@@ -41,4 +41,7 @@ Repository: https://github.com/slawek-kordaczuk/mega-s01e03-what-it-shows
 
 The initial fine-grained token could not create a repository. The human replaced it with
 a suitable token and explicitly approved this public repository, file pushes, and issues.
-Course acceptance is pending submission; public issues and repository creation have succeeded.
+The course accepted the two tickets at step one. Its next engineering update says #4471
+closed on 2026-10-05: parser fixed (`fix(dates): parse dd/mm for eu locales`), hint won't fix
+(booking-v3 form retired). The public closures preserve those different outcomes:
+parser completed; hint not planned. Final course acceptance is pending resubmission.

@@ -3,19 +3,19 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <link href="../../../_app/immutable/entry/start.CTgOQRwc.js" rel="modulepreload">
+    <link href="../../../_app/immutable/entry/start.DQf_680k.js" rel="modulepreload">
 		<link href="../../../_app/immutable/chunks/CCQCA_wo.js" rel="modulepreload">
-		<link href="../../../_app/immutable/chunks/x0Xo77Un.js" rel="modulepreload">
+		<link href="../../../_app/immutable/chunks/BKLxxJYM.js" rel="modulepreload">
 		<link href="../../../_app/immutable/chunks/BKHQZGXY.js" rel="modulepreload">
-		<link href="../../../_app/immutable/entry/app.CiqaWbC_.js" rel="modulepreload">
+		<link href="../../../_app/immutable/entry/app.BjKyXYQG.js" rel="modulepreload">
 		<link href="../../../_app/immutable/chunks/CTI9AgN1.js" rel="modulepreload">
 		<link href="../../../_app/immutable/chunks/CE8BLXTJ.js" rel="modulepreload">
 		<link href="../../../_app/immutable/chunks/CM4rNPML.js" rel="modulepreload">
 		<link href="../../../_app/immutable/chunks/BfPXsc-V.js" rel="modulepreload">
 		<link href="../../../_app/immutable/nodes/0.DVn_uchl.js" rel="modulepreload">
 		<link href="../../../_app/immutable/chunks/_hnNinwO.js" rel="modulepreload">
-		<link href="../../../_app/immutable/nodes/4.CWAExqZZ.js" rel="modulepreload">
-		<link href="../../../_app/immutable/chunks/DyWGKGOe.js" rel="modulepreload">
+		<link href="../../../_app/immutable/nodes/4.CpJhJod-.js" rel="modulepreload">
+		<link href="../../../_app/immutable/chunks/Dm8iQSje.js" rel="modulepreload">
 		<link href="../../../_app/immutable/chunks/ISchWhUY.js" rel="modulepreload">
 		<link href="../../../_app/immutable/chunks/2kG4nqZ8.js" rel="modulepreload">
 		<link href="../../../_app/immutable/chunks/124Y-4et.js" rel="modulepreload">
@@ -31,9 +31,13 @@
     <div style="display: contents"><!--[--><!--[0--><!--[--><!--[--><div class="kb svelte-e2jw2j"><header><a class="crumb svelte-e2jw2j" href="/kb">support desk · kb</a> <h1 class="svelte-e2jw2j">0002 — Split #4471 and deduplicate by cause</h1> <p class="meta svelte-e2jw2j"><span>owner <b>support desk / GPT-6.1 Sol</b></span> <span class="status proposed svelte-e2jw2j">proposed</span> <span class="svelte-e2jw2j">reviewed 2026-11-03 · 0 days ago</span></p></header> <!--[-1--><!--]--> <main><h2>Context: the label is not the diagnosis</h2> <p>This review supersedes the subject-only merging recommendation in <a href="/kb/decisions/0001-dedupe-by-subject">decision 0001</a> and <a href="/kb/triage/dedupe">the old triage guide</a>. The accepted decision record is preserved unchanged.
 This replacement is <strong>proposed</strong>, not approval on behalf of the support desk.</p> <p>The <a href="/kb/incidents/4471">incident page for #4471</a> says “one issue, one fix queued.”
 Its computed table contradicts that claim. A known label and a queued fix do not mean
-every report has the same cause, or that either problem is fixed.</p> <p>This is a review of the export dated 2026-10-04, not live access to the desk.
+every report has the same cause, or that either problem is fixed.</p> <p>The report analysis uses the export dated 2026-10-04, not live access to the desk.
 The reviewed date records this review; it does not make old exported data current.
-Check later reports before making a current operational claim.</p> <h2>What the reports cover</h2> <p><strong>412 unique reports</strong> are merged into #4471, from 427 export rows.
+The subsequent engineering update below comes from the course Challenge page.</p> <h2>Engineering outcome: #4471 closed on 2026-10-05</h2> <p>After the course accepted the two tickets, its <a href="https://hq.mega.dev/challenges/what-it-shows" rel="nofollow">Challenge page</a> showed a new engineering update:</p> <ul><li><strong>Parser: fixed.</strong> Engineering reports <code>fix(dates): parse dd/mm for eu locales</code>.
+Close <a href="https://github.com/slawek-kordaczuk/mega-s01e03-what-it-shows/issues/1" rel="nofollow">parser issue #1</a> as <strong>completed</strong>, based on that update, not a claim of independent production testing.</li> <li><strong>Hint: won’t fix.</strong> The booking-v3 form was retired.
+Close <a href="https://github.com/slawek-kordaczuk/mega-s01e03-what-it-shows/issues/2" rel="nofollow">hint issue #2</a> as <strong>not planned</strong>. The form’s retirement removes that path; it does not mean its hint was corrected.</li></ul> <p>The historical counts and charts below remain the pre-closure snapshot. Neither closure
+changes which cause each report belongs to. The deduplication-policy replacement remains
+proposed for desk review; closing product tickets does not approve a new desk policy.</p> <h2>What the reports cover</h2> <p><strong>412 unique reports</strong> are merged into #4471, from 427 export rows.
   Deduplicating by report ID removes 15 repeated rows.
   Reports were received from 2026-04-01 through 2026-10-04.</p> <table><thead><tr><th>Problem</th><th>Unique reports</th><th>Tenant count</th><th>First / last received</th></tr></thead><tbody><!--[--><tr><td><code>parser</code></td><td>379</td><td>11</td><td>2026-04-01 / 2026-10-04</td></tr><tr><td><code>hint</code></td><td>33</td><td>3</td><td>2026-04-17 / 2026-09-22</td></tr><!--]--></tbody></table> <p>Intake tags disagree with tenant-and-channel classification on 38 reports.
   The desk notes flag 5 reports read as one-day moves; all remain in their tenant-derived groups.
@@ -63,19 +67,20 @@ Each records its unique count, evidence, reproduction, and expected result.
 The cause table above describes the original exported desk ticket, before this public split.
 Keep the old decision intact;
 ask the support desk to accept this replacement and update its triage entry point.
-At handover, re-check current desk counts rather than treating this snapshot as a live queue.</p> <!--[0--><p class="stamp svelte-1280m42">desk ref <b class="svelte-1280m42">DR-J2TJ-Z2XQ</b></p><!--]--><!----><!----></main> <footer class="svelte-e2jw2j">Pages are written by people. Tables and charts are built from data at render time.</footer></div><!--]--><!----><!--]--><!--]--> <!--[-1--><!--]--><!--]-->
+At handover, preserve the engineering outcomes above alongside the pre-closure counts;
+re-check current desk reports rather than treating this snapshot as a live queue.</p> <!--[0--><p class="stamp svelte-1280m42">desk ref <b class="svelte-1280m42">DR-J2TJ-Z2XQ</b></p><!--]--><!----><!----></main> <footer class="svelte-e2jw2j">Pages are written by people. Tables and charts are built from data at render time.</footer></div><!--]--><!----><!--]--><!--]--> <!--[-1--><!--]--><!--]-->
 			
 			<script>
 				{
-					__sveltekit_qcpqom = {
+					__sveltekit_wph9cr = {
 						base: new URL("../../..", location).pathname.slice(0, -1)
 					};
 
 					const element = document.currentScript.parentElement;
 
 					Promise.all([
-						import("../../../_app/immutable/entry/start.CTgOQRwc.js"),
-						import("../../../_app/immutable/entry/app.CiqaWbC_.js")
+						import("../../../_app/immutable/entry/start.DQf_680k.js"),
+						import("../../../_app/immutable/entry/app.BjKyXYQG.js")
 					]).then(([kit, app]) => {
 						kit.start(app, element, {
 							node_ids: [0, 4],

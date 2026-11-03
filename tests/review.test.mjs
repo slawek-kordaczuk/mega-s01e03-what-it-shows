@@ -52,6 +52,9 @@ test('the page is genuinely rendered, signed, and contains computed evidence', (
   assert.ok(html.includes('38 reports'));
   assert.ok(html.includes('different causes'));
   assert.ok(html.includes('183'));
+  assert.ok(html.includes('fix(dates): parse dd/mm for eu locales'));
+  assert.ok(html.includes('not planned'));
+  assert.ok(html.includes('booking-v3 form was retired'));
   assert.ok(!html.includes('no desk ref:'));
   assert.ok(!html.includes('<RenderStamp'));
 });

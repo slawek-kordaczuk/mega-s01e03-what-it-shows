@@ -27,9 +27,25 @@ The [incident page for #4471](/kb/incidents/4471) says “one issue, one fix que
 Its computed table contradicts that claim. A known label and a queued fix do not mean
 every report has the same cause, or that either problem is fixed.
 
-This is a review of the export dated 2026-10-04, not live access to the desk.
+The report analysis uses the export dated 2026-10-04, not live access to the desk.
 The reviewed date records this review; it does not make old exported data current.
-Check later reports before making a current operational claim.
+The subsequent engineering update below comes from the course Challenge page.
+
+## Engineering outcome: #4471 closed on 2026-10-05
+
+After the course accepted the two tickets, its
+[Challenge page](https://hq.mega.dev/challenges/what-it-shows) showed a new engineering update:
+
+- **Parser: fixed.** Engineering reports `fix(dates): parse dd/mm for eu locales`.
+  Close [parser issue #1](https://github.com/slawek-kordaczuk/mega-s01e03-what-it-shows/issues/1)
+  as **completed**, based on that update, not a claim of independent production testing.
+- **Hint: won't fix.** The booking-v3 form was retired.
+  Close [hint issue #2](https://github.com/slawek-kordaczuk/mega-s01e03-what-it-shows/issues/2)
+  as **not planned**. The form's retirement removes that path; it does not mean its hint was corrected.
+
+The historical counts and charts below remain the pre-closure snapshot. Neither closure
+changes which cause each report belongs to. The deduplication-policy replacement remains
+proposed for desk review; closing product tickets does not approve a new desk policy.
 
 ## What the reports cover
 
@@ -104,6 +120,7 @@ Each records its unique count, evidence, reproduction, and expected result.
 The cause table above describes the original exported desk ticket, before this public split.
 Keep the old decision intact;
 ask the support desk to accept this replacement and update its triage entry point.
-At handover, re-check current desk counts rather than treating this snapshot as a live queue.
+At handover, preserve the engineering outcomes above alongside the pre-closure counts;
+re-check current desk reports rather than treating this snapshot as a live queue.
 
 <RenderStamp {signature} />
